@@ -21,7 +21,7 @@ def main():
 
     trader1 = Trader1(1,hands[0])
     trader2 = Trader2(2,hands[1])
-    trader3 = Trader3(1,hands[2])
+    trader3 = Trader3(3,hands[2])
     trader4 = Trader4(4,hands[3])
     traders = [trader1, trader2, trader3, trader4]
     print(deck)
