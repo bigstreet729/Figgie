@@ -46,6 +46,9 @@ class Orderbook:
             player_cards = cards[i*10:(i+1)*10]
             for card  in player_cards:
                 hand[card]+=1
+            for suit in ['Spades','Hearts','Diamonds','Clubs']:
+                if suit not in hand:
+                    hand[suit]=0
             hands.append(dict(hand))
         print("===DECK DISTRIBUTED===")
         for i,hand in enumerate(hands,1):

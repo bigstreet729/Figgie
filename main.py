@@ -6,11 +6,11 @@ from Trader2 import Trader2
 from Trader3 import Trader3
 from Trader4 import Trader4
 
-def trader_thread(trader,orderbook,suits):
-
-    print(f"Thread {trader.id} Starting..")
-    trader.compute_fair_prices(orderbook)
-    print(f"Trader {trader.id} Submitted")
+def trader_thread(trader, orderbook, suits, lock):
+    with lock:
+        print(f"Thread {trader.id} Starting..")
+        trader.compute_fair_prices(orderbook)
+        print(f"Trader {trader.id} Submitted")
 
 def main():
 
@@ -27,6 +27,9 @@ def main():
     print(deck)
     suits = list(deck.keys())
     
+    # Create a lock for synchronizing output
+    lock = threading.Lock()
+    
     # Start trader threads
     print("="*50)
     print("STARTING TRADER THREADS")
@@ -35,7 +38,7 @@ def main():
     for trader in traders:
         thread = threading.Thread(
             target=trader_thread, 
-            args=(trader, orderbook, suits)
+            args=(trader, orderbook, suits, lock)
         )
         thread.start()
         threads.append(thread)
