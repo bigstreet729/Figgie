@@ -10,7 +10,6 @@ def trader_thread(trader,orderbook,suits):
 
     print(f"Thread {trader.id} Starting..")
     trader.compute_fair_prices(orderbook)
-    trader.display_info()
     print(f"Trader {trader.id} Submitted")
 
 def main():
@@ -36,7 +35,7 @@ def main():
     for trader in traders:
         thread = threading.Thread(
             target=trader_thread, 
-            args=(trader, deck, orderbook, suits)
+            args=(trader, orderbook, suits)
         )
         thread.start()
         threads.append(thread)

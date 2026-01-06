@@ -40,8 +40,8 @@ class Trader4:
         for suit,prob in self.probabilities_goal_suit.items():
             self.fair_price[suit]=prob*10
         print("====================================================================")
-        print(f"================TRADER 4 : {self.hand}======")
+        print(f"================TRADER 4 : {self.hand}================")
         print(f"======== {self.fair_price}=======")
-        print(f"======== {self.probabilities_goal_suit}=======")
+        print(f"======== {self.probabilities_goal_suit}===============")
         print("====================================================================")
 
