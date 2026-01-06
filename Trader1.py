@@ -38,10 +38,12 @@ class Trader1:
 
         for suit,prob in self.probabilities_goal_suit.items():
             self.fair_price[suit]=prob*10
+        fair_price_formatted = {k: round(v, 2) for k, v in self.fair_price.items()}
+        prob_formatted = {k: round(v, 2) for k, v in self.probabilities_goal_suit.items()}
         print("====================================================================")
         print(f"TRADER 1 : {self.hand}======")
-        print(f"Fair prices : {self.fair_price}=======")
-        print(f"Probabs of goal suit : {self.probabilities_goal_suit}=======")
+        print(f"Fair prices : {fair_price_formatted}=======")
+        print(f"Probabs of goal suit : {prob_formatted}=======")
         print("====================================================================")
     def submit_orders(self, orderbook, suits: List[str]):
         """Submit buy and sell orders"""
